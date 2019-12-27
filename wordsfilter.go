@@ -1,4 +1,4 @@
-package wordsfilter
+package gwordsfilter
 
 import (
 	"bufio"

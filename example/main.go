@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
-	"github.com/pides/gwordsfilter/wordsfilter"
+	"github.com/pides/gwordsfilter"
 )
 
 func main(){
