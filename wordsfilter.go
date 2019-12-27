@@ -1,8 +1,7 @@
-package wordsfilter
+package gwordsfilter
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -22,10 +21,9 @@ func New() *Wordsfilter {
 	return wf
 }
 
-func (t *Wordsfilter) Read(filename string) {
+func (t *Wordsfilter) Read(filename string) (err error){
 	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Println(err)
 		return
 	}
 	defer func() {
@@ -38,6 +36,9 @@ func (t *Wordsfilter) Read(filename string) {
 			break
 		}
 		str := string(content)
+		if strings.Trim(str, " ") == ""{
+			continue
+		}
 		for _, v := range str {
 			if _, ok := t.Dictionary[string(v)]; ok == false {
 				t.Dictionary[string(v)] = NewDictionaryItem()
@@ -46,6 +47,7 @@ func (t *Wordsfilter) Read(filename string) {
 			break
 		}
 	}
+	return
 }
 
 func (t *Wordsfilter) CheckWord(word string) (bool, []DictionaryIndex) {

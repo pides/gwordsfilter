@@ -1,4 +1,4 @@
-package wordsfilter
+package gwordsfilter
 
 import (
 	"strings"
@@ -21,6 +21,11 @@ func NewDictionaryItem() *DictionaryItem{
 }
 
 func (t *DictionaryItem) Append(content string){
+	for _, v := range t.List{
+		if v == content{
+			return
+		}
+	}
 	t.List = append(t.List, content)
 }
 
