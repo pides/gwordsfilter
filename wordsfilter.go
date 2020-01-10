@@ -65,7 +65,7 @@ func (t *Wordsfilter) CheckWord(word string) (bool, []DictionaryIndex) {
 				flag, idxList := item.CheckWord(str, i)
 				if !flag {
 					indexList = append(indexList, idxList...)
-					if t.LimitReplaceStr > 0 && len(indexList) < t.LimitReplaceStr{
+					if t.LimitReplaceStr > 0 && len(indexList) >= t.LimitReplaceStr{
 						return false, indexList
 					}
 				}
